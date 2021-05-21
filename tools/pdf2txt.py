@@ -182,6 +182,7 @@ def maketheparser():
 
 def main(args=None):
 
+    print("started")
     P = maketheparser()
     A = P.parse_args(args=args)
 

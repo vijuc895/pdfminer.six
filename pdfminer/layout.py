@@ -794,27 +794,27 @@ class LTLayoutContainer(LTContainer):
             return
         textlines = list(self.group_objects(laparams, textobjs))
         (empties, textlines) = fsplit(lambda obj: obj.is_empty(), textlines)
-        for obj in empties:
-            obj.analyze(laparams)
-        textboxes = list(self.group_textlines(laparams, textlines))
-        if laparams.boxes_flow is None:
-            for textbox in textboxes:
-                textbox.analyze(laparams)
+        # for obj in empties:
+        #     obj.analyze(laparams)
+        # textboxes = list(self.group_textlines(laparams, textlines))
+        # if laparams.boxes_flow is None:
+        #     for textbox in textboxes:
+        #         textbox.analyze(laparams)
 
-            def getkey(box):
-                if isinstance(box, LTTextBoxVertical):
-                    return (0, -box.x1, -box.y0)
-                else:
-                    return (1, -box.y0, box.x0)
-            textboxes.sort(key=getkey)
-        else:
-            self.groups = self.group_textboxes(laparams, textboxes)
-            assigner = IndexAssigner()
-            for group in self.groups:
-                group.analyze(laparams)
-                assigner.run(group)
-            textboxes.sort(key=lambda box: box.index)
-        self._objs = textboxes + otherobjs + empties
+        #     def getkey(box):
+        #         if isinstance(box, LTTextBoxVertical):
+        #             return (0, -box.x1, -box.y0)
+        #         else:
+        #             return (1, -box.y0, box.x0)
+        #     textboxes.sort(key=getkey)
+        # else:
+        #     self.groups = self.group_textboxes(laparams, textboxes)
+        #     assigner = IndexAssigner()
+        #     for group in self.groups:
+        #         group.analyze(laparams)
+        #         assigner.run(group)
+        #     textboxes.sort(key=lambda box: box.index)
+        self._objs = textlines
         return
 
 
