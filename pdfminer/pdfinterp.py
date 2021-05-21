@@ -914,6 +914,7 @@ class PDFPageInterpreter:
         except PSEOF:
             # empty page
             return
+        print("executed--")
         while 1:
             try:
                 (_, obj) = parser.nextobject()
