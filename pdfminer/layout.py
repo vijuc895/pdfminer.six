@@ -814,7 +814,7 @@ class LTLayoutContainer(LTContainer):
         #         group.analyze(laparams)
         #         assigner.run(group)
         #     textboxes.sort(key=lambda box: box.index)
-        self._objs = textlines
+        self._objs = textlines + otherobjs
         return
 
 
