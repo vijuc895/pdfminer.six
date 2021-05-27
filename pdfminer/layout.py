@@ -651,15 +651,11 @@ class LTLayoutContainer(LTContainer):
                     yield line
                     line = None
                 else:
-                    if valign and not halign:
-                        line = LTTextLineVertical(laparams.word_margin)
-                        line.add(obj0)
-                        line.add(obj1)
-                    elif halign and not valign:
+                    if halign and not valign:
                         line = LTTextLineHorizontal(laparams.word_margin)
                         line.add(obj0)
                         line.add(obj1)
-                    else:
+                    elif not valign:
                         line = LTTextLineHorizontal(laparams.word_margin)
                         line.add(obj0)
                         yield line
